@@ -1,0 +1,10 @@
+[
+  {
+    "gauge_type": "half-circle-needle",
+    "title": "Fuel Pressure",
+    "colors": {},
+    "select": [
+      { "serial_key": "pressure" }
+    ]
+  }
+]
