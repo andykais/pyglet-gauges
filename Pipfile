@@ -15,7 +15,6 @@ python_version = '3.6'
 pyglet = "*"
 cairocffi = "*"
 jsonschema = "*"
-better-exceptions = "*"
 
 
 [dev-packages]
