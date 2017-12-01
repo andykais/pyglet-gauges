@@ -41,15 +41,15 @@ class animator(metaclass=ABCMeta):
     if (self.numSerialKeys > 0 and len(self.serialKeys) != self.numSerialKeys):
       raise ValueError(f'{self.id} requires exactly {self.numSerialKeys} serial key(s), not {len(self.serialKeys)}')
 
+  # change the locations / colors / opacities of different parts of an animator
   @abstractmethod
   def update(self, reducedSerialDict):
     pass
+  # select which parts of serial data are needed for the update function
   @abstractmethod
   def select(self, serialDict):
     pass
-  @abstractmethod
-  def draw(self):
-    pass
+  # delete sprites from the batch
   def delete(self):
     for sprite in self.sprites.values():
       sprite.delete()

@@ -31,5 +31,9 @@ def set():
       )
     )
 
+def update(serialData):
+  for animator in animators:
+    animator.update(animator.select(serialData))
+
 def draw():
   batch.draw()

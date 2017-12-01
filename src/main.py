@@ -13,8 +13,7 @@ AnimatorManager.set()
 
 def update(dt):
   serialData = getSerialData()
-  for animator in AnimatorManager.animators:
-    animator.update(animator.select(serialData))
+  AnimatorManager.update(serialData)
 
 @window.event
 def on_draw():

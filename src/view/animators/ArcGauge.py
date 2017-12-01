@@ -31,9 +31,5 @@ class animator(AbstractAnimator.animator):
     attributeInfo = serialUnits.get()[self.serialKeys[0]]
     targetPercentage = calculations.percentageBetween(attributeInfo['min'], attributeInfo['max'], dataPoint)
     self.sprites['needle'].update(targetPercentage)
-    pass
   def select(self, serialData):
     return serialData[self.serialKeys[0]]
-    pass
-  def draw(self):
-    pass

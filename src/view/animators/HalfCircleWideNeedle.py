@@ -44,5 +44,3 @@ class animator(AbstractAnimator.animator):
         )
   def select(self, serialData):
     return serialData[self.serialKeys[0]]
-  def draw(self):
-    pass

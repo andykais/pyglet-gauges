@@ -18,5 +18,3 @@ class animator(AbstractAnimator.animator):
     pass
   def select(self, _):
     pass
-  def draw(self):
-    pass

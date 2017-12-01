@@ -1,3 +1,7 @@
+# a helper class to allow dictionary values to be accessed like so:
+# x = {'a': 1}
+# assert x.a == 1
+
 class DotDict(dict):
   """dot.notation access to dictionary attributes"""
   def __init__(self, object):
