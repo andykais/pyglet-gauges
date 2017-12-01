@@ -5,11 +5,14 @@ SRC_DIR=src
 SRC_FILE=$SRC_DIR/main.py
 
 function clean () {
- echo "TODO implement this command"
+ find $SRC_DIR -name "*.pyc" -delete
 }
 
 function run () {
   python $SRC_FILE
+}
+function run:prod () {
+  PRODUCTION=true python $SRC_FILE
 }
 
 function watch () {

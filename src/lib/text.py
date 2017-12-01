@@ -65,7 +65,6 @@ def curl(x, y, width, height, text_width, text_height):
   return [xnew + width/2, ynew + height*2/5]
 
 def generateTextImage():
-  print('yeah sure')
   width, height = 500, 500
   surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
   #  surface = cairo.ImageSurface(cairo.FORMAT_A8, 300, 200)

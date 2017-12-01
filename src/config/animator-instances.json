@@ -1,0 +1,42 @@
+[
+  {
+    "animator_id": "background",
+    "title": "Background Image",
+    "column": 0,
+    "color_override": {},
+    "select": []
+  },
+  {
+    "animator_id": "half-circle-wide-needle",
+    "title": "Pressure",
+    "column": 0,
+    "color_override": {
+      "primary": [10,100,150],
+      "accent": [0,40,0]
+    },
+    "select": [
+      { "serial_key": "pressure" }
+    ]
+  },
+  {
+    "animator_id": "arc-gauge",
+    "title": "RPMs",
+    "column": 4,
+    "color_override": {},
+    "select": [
+      { "serial_key": "rpm" }
+    ]
+  },
+  {
+    "animator_id": "half-circle-wide-needle",
+    "title": "Tempurature",
+    "column": 8,
+    "color_override": {
+      "primary": [0,150,150],
+      "accent": [180,0,0]
+    },
+    "select": [
+      { "serial_key": "tempurature" }
+    ]
+  }
+]

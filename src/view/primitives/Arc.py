@@ -3,7 +3,6 @@ from pyglet import gl
 from math import pi, cos, sin, fabs
 # local imports
 from .. import AbstractAnimator
-from serial import getSerialInfo
 from lib import calculations
 
 
@@ -43,7 +42,11 @@ def getArcCoords(origin, radius, alpha_radius=0, clockwise=True, start_angle=(pi
 
 
 class animator(AbstractAnimator.animator):
-  def __init__(self, origin, radius, percentage=1, alphaRadius=0, color=(255,255,255), batch=None, group=None):
+  id = 'primitive-arc'
+  numSerialKeys = 0
+  columnsTaken = 3
+
+  def __init__(self, origin, radius, batch, group, percentage=1, alphaRadius=0, color=(255,255,255)):
     self.origin = origin
     self.radius = radius
     self.percentage = percentage
@@ -52,16 +55,13 @@ class animator(AbstractAnimator.animator):
     self.verticies = getArcCoords(origin, radius, alphaRadius)
     pointsDrawn = len(self.verticies) // 2
     self.colorPoints = color * pointsDrawn
-    if (batch != None and group != None):
-      self.manuallyDraw = False
-      self.vertex_list = batch.add(pointsDrawn, gl.GL_QUAD_STRIP, group,
-        ('v2f/static', self.verticies),
-        ('c3B/static', self.colorPoints))
-    else:
-      self.manuallyDraw = True
-      self.vertex_list = pyglet.graphics.vertex_list(pointsDrawn,
-          ('v2f/static', self.verticies),
-          ('c3B/static', self.colorPoints))
+    self.sprites = {}
+    self.vertex_list = batch.add(pointsDrawn, gl.GL_QUAD_STRIP, group,
+      ('v2f/static', self.verticies),
+      ('c3B/static', self.colorPoints))
+    #  self.sprites = {
+      #  'vertex_list': 
+    #  }
     self.__slice_points()
   def __slice_points(self):
     coordsRemaining = int(len(self.verticies) * self.percentage )
@@ -74,9 +74,9 @@ class animator(AbstractAnimator.animator):
       self.percentage = percentage
     else:
       self.percentage = self.percentage + delta
+    self.percentage = min(max(self.percentage, 0), 1)
     self.__slice_points()
   def draw(self):
-    if (self.manuallyDraw):
-      self.vertex_list.draw(gl.GL_QUAD_STRIP)
+    pass
   def select(self, percentage):
     return percentage
