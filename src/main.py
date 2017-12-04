@@ -12,12 +12,15 @@ window = pyglet.window.Window(screen.get().width, screen.get().height, config=co
 environment.use_in_development_only(lambda: window.set_location(5, 928))
 AnimatorManager.set()
 
+print(pyglet.gl.glGetString(pyglet.gl.GL_VERSION))
+
 def update(dt):
   serialData = getSerialData()
   AnimatorManager.update(serialData)
 
 @window.event
 def on_draw():
+  window.clear()
   AnimatorManager.draw()
 
 pyglet.clock.schedule_interval(update, 1/screen.get().refresh_rate)
