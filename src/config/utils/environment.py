@@ -13,3 +13,6 @@ def set(base_dir):
 def use_in_development_only(func):
   if (not production):
     func()
+def use_in_production_only(func):
+  if (production):
+    func()

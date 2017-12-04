@@ -6,7 +6,8 @@ from serial import getSerialData
 from view import AnimatorManager
 from config.utils.access import screen
 
-config = pyglet.gl.Config(sample_buffers=1, samples=4)
+# adds antialising (not able in osx)
+config = pyglet.gl.Config(sample_buffers=1, samples=4) if environment.production else None
 window = pyglet.window.Window(screen.get().width, screen.get().height, config=config, resizable=False) 
 environment.use_in_development_only(lambda: window.set_location(5, 928))
 AnimatorManager.set()
