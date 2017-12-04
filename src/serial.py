@@ -1,3 +1,7 @@
+from config.utils import access, environment
+from random import uniform
+
+
 class SerialInfo():
   def __init__(self, id, min, max, unit):
     self.id = id
@@ -5,34 +9,27 @@ class SerialInfo():
     self.max = max
     self.unit = unit
 
-def getSerialInfo():
-  return {
-      'rpms': SerialInfo(
-        id='rpms',
-        min=0,
-        max=1,
-        unit='RPMs'
-        )
-      ,
-      'psi': SerialInfo(
-        id='psi',
-        min=0,
-        max=1,
-        unit='PSI'
-        )
 
-      }
-
-from random import uniform
-serialInfoDict = getSerialInfo()
 index = 0
 serialDataDict = {}
-def getSerialData():
-  keys = ['rpms', 'psi']
+def getFakeSerialData():
+  serialInfo = access.serialUnits.get()
+  keys = serialInfo.keys()
   global index, serialDataDict
   if (index % 10 == 0):
     index = 0
-    serialDataDict = {k: uniform(serialInfoDict[k].min, serialInfoDict[k].max)
+    serialDataDict = {k: uniform(serialInfo[k]['min'], serialInfo[k]['max'])
         for k in keys}
   index += 1
   return serialDataDict
+
+
+def getSerialDataFromDevice():
+  # TODO make this return real data
+  return getFakeSerialData()
+
+def getSerialData():
+  if (environment.production):
+    return getSerialDataFromDevice()
+  else:
+    return getFakeSerialData()

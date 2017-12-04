@@ -1,7 +1,7 @@
 {
   "rpm": {
     "unit": "RPM",
-    "max": 100,
+    "max": 1,
     "min": 0
   },
   "pressure": {

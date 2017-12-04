@@ -2,9 +2,9 @@
   "theme_id": "collegeai",
   "title": "CollegeAI's Theme",
   "color_pallete": {
-    "primary": "blue",
-    "accent": "pink",
-    "dull": "black"
+    "primary": [255,255,255],
+    "accent": [255,0,0],
+    "dull": [0,0,0]
   },
   "images": {
     "wide_needle": "assets/wide-needle.png",
